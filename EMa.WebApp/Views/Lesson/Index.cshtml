@@ -1,0 +1,89 @@
+﻿@model List<ListLessonViewModel>
+@{
+    ViewData["Title"] = "Danh sách bài học từ EMa";
+}
+
+<div class="container-fluid page-body-wrapper">
+    <div class="main-panel">
+        <div class="content-wrapper pb-0">
+            <div class="row">
+                <div class="col-lg-12 mb-3">
+                    <a href="/lesson/create" class="btn btn-primary mb-2 mb-md-0 mr-2"> Tạo bài học mới </a>
+                </div>
+                <div class="col-xl-12 stretch-card grid-margin">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="mt-2">Danh mục bài học từ EMa</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Bài học</th>
+                                            <th>Danh mục</th>
+                                            <th>Trạng thái</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                        <tr>
+                                            <td>
+                                                <div style="float: left">
+                                                    <a style="color: #333" asp-action="update" asp-route-id="@item.Id" alt="Nhấn để sửa" title="Nhấn vào để chỉnh sửa" style="text-decoration: none;">
+                                                        <b>@item.Name</b>
+                                                    </a>
+                                                    <p style="font-size:11px">@item.ModifiedDate?.ToString("dd/MM/yyyy") | @item.ModifiedDate?.ToString("h:mm tt")</p>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                @item.QuizName
+                                            </td>
+                                            <td>
+                                                @if (item.IsActive)
+                                                {
+                                                    <a asp-action="ChangeStatus" asp-route-id="@item.Id" alt="Nhấn để ẩn" title="Nhấn để ẩn">
+                                                        <span style="cursor: pointer!important;">
+                                                            <label class="badge badge-success">
+                                                                <i class="mdi mdi-eye"></i>
+                                                            </label>
+                                                        </span>
+                                                    </a>
+                                                }
+                                                else
+                                                {
+                                                    <a asp-action="ChangeStatus" asp-route-id="@item.Id" alt="Nhấn để hiển thị" title="Nhấn để hiển thị">
+                                                        <span style="cursor: pointer!important;">
+                                                            <label class="badge badge-danger">
+                                                                <i class="mdi mdi-eye-off"></i>
+                                                            </label>
+                                                        </span>
+                                                    </a>
+                                                }
+                                            </td>
+                                            <td>
+                                                <a asp-action="AddQuiz" asp-route-lessonId="@item.Id" alt="Nhấn để thêm" title="Nhấn để thêm">
+                                                    <label class="badge badge-success">
+                                                        <i class="mdi mdi-plus"></i> Thêm câu hỏi
+                                                    </label>
+                                                </a>
+                                                <a asp-action="Delete" asp-route-id="@item.Id" alt="Nhấn để xóa" title="Nhấn để xóa">
+                                                    <label class="badge badge-danger">
+                                                        <i class="mdi mdi-trash-can-outline"></i>
+                                                    </label>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

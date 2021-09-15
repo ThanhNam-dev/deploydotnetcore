@@ -1,0 +1,56 @@
+﻿@model Quiz
+
+@{
+    ViewData["Title"] = ViewBag.LessonName + " - Tạo các câu hỏi mới";
+}
+
+<div class="container-fluid page-body-wrapper">
+    <div class="main-panel">
+        <div class="content-wrapper pb-0">
+            <div class="row">
+                <div class="col-xl-12 stretch-card grid-margin">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>@ViewBag.LessonName - Tạo bài học mới</h3>
+                        </div>
+                        <div class="card-body">
+                            <form method="post" asp-action="AddQuiz" asp-controller="Lesson">
+                                <input name="LesionId" type="hidden" value="@ViewBag.LessonId" readonly disabled />
+                                <div class="form-group">
+                                    <label>Câu hỏi</label>
+                                    <input type="text" name="QuestionName" class="form-control" placeholder="Enter type name" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Đáp án đúng</label>
+                                    <input type="text" name="CorrectAnswer" class="form-control" placeholder="Enter type name" />
+                                </div>
+                                <div class="form-group">
+                                    <label>#1 Đáp án khác </label>
+                                    <input type="text" name="InCorrectAnswer1" class="form-control" placeholder="Enter type name" />
+                                </div>
+                                <div class="form-group">
+                                    <label>#2 Đáp án khác </label>
+                                    <input type="text" name="InCorrectAnswer2" class="form-control" placeholder="Enter type name" />
+                                </div>
+                                <div class="form-group">
+                                    <label>#3 Đáp án khác </label>
+                                    <input type="text" name="InCorrectAnswer3" class="form-control" placeholder="Enter type name" />
+                                </div>
+                                <div class="form-group">
+                                    <label>#4 Đáp án khác </label>
+                                    <input type="text" name="InCorrectAnswer4" class="form-control" placeholder="Enter type name" />
+                                </div>
+                                <div class="form-group">
+                                    <label>#5 Đáp án khác </label>
+                                    <input type="text" name="InCorrectAnswer5" class="form-control" placeholder="Enter type name" />
+                                </div>
+                                <button type="submit" class="btn btn-primary mr-2"> Submit </button>
+                                <a href="/post" class="btn btn-light">Cancel</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

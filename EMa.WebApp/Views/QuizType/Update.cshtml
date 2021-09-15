@@ -1,0 +1,37 @@
+﻿@model QuizType
+
+@{
+    ViewData["Title"] = ViewBag.Name + " - Chỉnh sửa danh mục";
+}
+
+<div class="container-fluid page-body-wrapper">
+    <div class="main-panel">
+        <div class="content-wrapper pb-0">
+            <div class="row">
+                <div class="col-xl-12 stretch-card grid-margin">
+                    <div class="card">
+                        <div class="card-header">
+                            <h6 class="mt-2">@ViewBag.Name </h6>
+                        </div>
+                        <div class="card-body">
+                            <form method="post" asp-action="Update" asp-controller="QuizType">
+                                <input type="hidden" readonly disabled name="Id" value="@Model.Id" />
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="form-group">
+                                            <label>Tiêu đề</label>
+                                            <input type="text" name="Name" class="form-control" placeholder="Enter your title" value="@Model.Name" />
+                                            <span class="error" aria-live="polite"></span>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary mr-2"> Submit </button>
+                                        <a href="/quiz-type" class="btn btn-light">Cancel</a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

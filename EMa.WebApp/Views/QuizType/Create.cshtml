@@ -1,0 +1,31 @@
+﻿@model QuizType
+
+@{
+    ViewData["Title"] = "Tạo danh mục câu hỏi";
+}
+
+<div class="container-fluid page-body-wrapper">
+    <div class="main-panel">
+        <div class="content-wrapper pb-0">
+            <div class="row">
+                <div class="col-xl-12 stretch-card grid-margin">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Tạo danh mục câu hỏi mới</h3>
+                        </div>
+                        <div class="card-body">
+                            <form method="post" asp-action="create" asp-controller="quiz-type">
+                                <div class="form-group">
+                                    <label>Content</label>
+                                    <input type="text" name="Name" class="form-control" placeholder="Enter type name" />
+                                </div>
+                                <button type="submit" class="btn btn-primary mr-2"> Submit </button>
+                                <a href="/post" class="btn btn-light">Cancel</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

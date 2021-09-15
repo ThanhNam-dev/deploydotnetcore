@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EMa.Common\EMa.Common.csproj" />
+    <ProjectReference Include="..\EMa.Data\EMa.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\img\" />
+    <Folder Include="wwwroot\uploads\blogs\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <EnvironmentName>Development</EnvironmentName>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,31 @@
+﻿@model Post
+
+@{
+    ViewData["Title"] = "Create New Post";
+}
+
+<div class="container-fluid page-body-wrapper">
+    <div class="main-panel">
+        <div class="content-wrapper pb-0">
+            <div class="row">
+                <div class="col-xl-12 stretch-card grid-margin">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Create new post</h3>
+                        </div>
+                        <div class="card-body">
+                            <form method="post" asp-action="create" asp-controller="post">
+                                <div class="form-group">
+                                    <label>Content</label>
+                                    <textarea cols="7" type="text" name="Content" class="form-control" placeholder="Enter your content"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary mr-2"> Submit </button>
+                                <a href="/post" class="btn btn-light">Cancel</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Login";
+    Layout = "~/Views/Shared/_Auth.cshtml";
+}
+
+<div class="left">
+    <a class="left__title" href="#" target="_blank"><img src="~/login-ui/assets/google.svg" alt="">Đăng nhập với Google</a>
+    <span>or</span>
+    <form method="post" asp-action="login" asp-controller="account">
+        <div class="left__input">
+            <label for="email">PhoneNumber</label>
+            <input id="email" name="PhoneNumber" type="tel" placeholder="Nhập số điện thoại của bạn" value="0968354148">
+        </div>
+
+        <div class="left__input">
+            <label for="password">Mật khẩu</label>
+            <input id="password" name="Password" type="password" placeholder="Mật khẩu" value="Abc123!@@#">
+        </div>
+
+        <div class="left__question">
+            <div class="left__remember">
+                <input type="checkbox" id="check" name="RememberMe" name="remember">
+                <label for="check"></label>
+                <p>Nhớ tôi</p>
+            </div>
+            <a href="#" class="left__forgot">Quên mật khẩu ?</a>
+        </div>
+
+        <button type="submit" class="btn">Đăng nhập</button>
+
+        <p class="left__text">Không có tài khoản? <a href="/register" target="_blank">Đăng ký</a></p>
+    </form>
+</div>
+

@@ -1,0 +1,93 @@
+﻿@model Lession
+
+@{
+    ViewData["Title"] = "Tạo bài học mới";
+}
+
+<div class="container-fluid page-body-wrapper">
+    <div class="main-panel">
+        <div class="content-wrapper pb-0">
+            <div class="row">
+                <div class="col-xl-12 stretch-card grid-margin">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3>Tạo danh mục câu hỏi mới</h3>
+                        </div>
+                        <div class="card-body">
+                            <form method="post" asp-action="Create" asp-controller="Quiz">
+                                <div class="form-group">
+                                    <label>Chọn danh mục</label>
+                                    <select type="text" name="QuizTypeId" asp-items="ViewBag.QuizTypes" class="form-control" id="selectTypeList">
+                                        <option>Select Quiz Type</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Chọn bài học</label>
+                                    <select class="form-control" id="selectLessonList" name="LessonId">
+                                        <option>Select Lesson</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Câu hỏi</label>
+                                    <input type="text" name="QuestionName" class="form-control" placeholder="Enter type name" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Đáp án đúng</label>
+                                    <input type="text" name="CorrectAnswer" class="form-control" placeholder="Enter type name" />
+                                </div>
+                                <div class="form-group">
+                                    <label>#1 Đáp án khác </label>
+                                    <input type="text" name="InCorrectAnswer1" class="form-control" placeholder="Enter type name" />
+                                </div>
+                                <div class="form-group">
+                                    <label>#2 Đáp án khác </label>
+                                    <input type="text" name="InCorrectAnswer2" class="form-control" placeholder="Enter type name" />
+                                </div>
+                                <div class="form-group">
+                                    <label>#3 Đáp án khác </label>
+                                    <input type="text" name="InCorrectAnswer3" class="form-control" placeholder="Enter type name" />
+                                </div>
+                                <div class="form-group">
+                                    <label>#4 Đáp án khác </label>
+                                    <input type="text" name="InCorrectAnswer4" class="form-control" placeholder="Enter type name" />
+                                </div>
+                                <div class="form-group">
+                                    <label>#5 Đáp án khác </label>
+                                    <input type="text" name="InCorrectAnswer5" class="form-control" placeholder="Enter type name" />
+                                </div>
+                                <button type="submit" class="btn btn-primary mr-2"> Submit </button>
+                                <a href="/post" class="btn btn-light">Cancel</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    $(document).ready(function () {
+        $("#selectTypeList").change(function () {
+            $('#selectLessonList').empty();
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("LoadLesson")',
+                dataType: 'json',
+                data: { id: $("#selectTypeList").val() },
+                success: function (ls) {
+                    $("#selectLessonList").append('<option value="' + -1 + '">' +
+                        "Select lesson" + '</option>');
+
+                    $.each(ls, function (i, item) {
+                        $("#selectLessonList").append('<option value="' + item.value + '">' +
+                            item.text + '</option>');
+                    });
+                },
+            });
+            return false;
+        })
+    })
+</script>
+}
